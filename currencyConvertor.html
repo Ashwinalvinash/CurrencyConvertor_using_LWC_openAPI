@@ -1,0 +1,57 @@
+<template>
+    <lightning-card title="Currency Convertor" icon-name="utility:currency">
+        <div class="formatFile">
+            <lightning-layout>
+                <lightning-layout-item>
+                    <lightning-input label="Enter Amount " onchange={changeHandler} name = "amount" type="number"></lightning-input>
+
+                </lightning-layout-item>
+            </lightning-layout>
+
+        </div>
+
+        <div class="formatFile">
+            <lightning-layout>
+                <lightning-layout-item>
+                    <lightning-combobox label="From Currency" onchange={changeHandler} name = "fromcurr" options={currencyOptions}>
+
+                    </lightning-combobox>
+                </lightning-layout-item>
+                <lightning-layout-item>
+                     <lightning-combobox label="To Currency" onchange={changeHandler} name = "tocurr" options={currencyOptions}>
+
+                    </lightning-combobox>
+                </lightning-layout-item>
+            </lightning-layout>
+        </div>
+
+        <div class="formatFile">
+             <lightning-layout>
+                <lightning-layout-item>
+                    <lightning-button label="Convert" onclick={handleClick} variant="brand">
+
+                    </lightning-button>
+                </lightning-layout-item>
+            </lightning-layout>
+
+        </div>
+
+        <template lwc:if={showOutput}>
+        <div>
+             <lightning-layout>
+                <lightning-layout-item>
+                    <p>Converted Value : </p>
+                </lightning-layout-item>
+                 <lightning-layout-item>
+                   <lightning-formatted-number value={convertedValue} format-style="currency" currency-code={toCurrnecy} currency-display-as="name">
+
+                   </lightning-formatted-number>
+                </lightning-layout-item>
+            </lightning-layout>
+
+        </div>
+        </template>
+
+    </lightning-card>
+    
+</template>
